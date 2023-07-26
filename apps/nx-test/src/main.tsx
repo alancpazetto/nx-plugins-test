@@ -1,6 +1,8 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
+import { Button, Tag } from '@org/design-system';
+
 import App from './app/app';
 
 const root = ReactDOM.createRoot(
@@ -9,5 +11,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <App />
+    <Button>asiopdkasopkasp</Button>
   </StrictMode>
 );

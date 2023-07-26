@@ -1,0 +1,79 @@
+{
+  "name": "create-custom-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/create-custom-app/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/create-custom-app",
+        "main": "libs/create-custom-app/src/index.ts",
+        "tsConfig": "libs/create-custom-app/tsconfig.lib.json",
+        "assets": [
+          "libs/create-custom-app/*.md",
+          {
+            "input": "./libs/create-custom-app/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/create-custom-app/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/create-custom-app",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/create-custom-app",
+            "glob": "executors.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/create-custom-app",
+            "glob": "migrations.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/create-custom-app/**/*.ts",
+          "libs/create-custom-app/package.json",
+          "libs/create-custom-app/generators.json",
+          "libs/create-custom-app/executors.json",
+          "libs/create-custom-app/migrations.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "libs/create-custom-app/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

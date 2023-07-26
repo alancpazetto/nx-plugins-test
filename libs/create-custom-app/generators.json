@@ -1,0 +1,14 @@
+{
+  "generators": {
+    "create": {
+      "factory": "./src/generators/create/generator",
+      "schema": "./src/generators/create/schema.json",
+      "description": "create generator"
+    },
+    "old-ds-to-new": {
+      "factory": "./src/generators/old-ds-to-new/generator",
+      "schema": "./src/generators/old-ds-to-new/schema.json",
+      "description": "old-ds-to-new generator"
+    }
+  }
+}
